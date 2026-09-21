@@ -23,6 +23,7 @@ class MainActivity : ComponentActivity() {
             val recipeViewModel: RecipeViewModel  = viewModel()
             val recipe = Recipe(
                 name = "Традиционная паэлья с морепродуктами",
+                //доработать
                 instructions = listOf("Очистите креветки и кальмары. Мелко нарежьте лук, чеснок и болгарский перец. Томаты натрите на терке, удалив кожуру. Разогрейте оливковое масло на большой сковороде. Обжарьте морепродукты по 1–2 минуты с каждой стороны, затем переложите их на тарелку. В той же сковороде обжарьте лук и чеснок до мягкости. Добавьте перец, а через 3 минуты — натертые томаты и паприку. Тушите 5 минут. Всыпьте рис круглозерный (лучше сорта Бомба) и обжаривайте 2 минуты, чтобы он впитал ароматы. Залейте горячим бульоном со щепоткой шафрана. Варите на среднем огне 15 минут, не перемешивая, чтобы на дне образовалась аппетитная корочка."),
                 tags = listOf("Обед", "Ужин", "Морепродукты", "ИспанскаяКухня", "ПраздничноеБлюдо"),
                 rating = 4.9
@@ -30,8 +31,8 @@ class MainActivity : ComponentActivity() {
             recipeViewModel.addRecipe(recipe)
 
             //pr1
-            //val productViewModel: ProductsViewModel = viewModel()
-            //productViewModel.fetch()
+//            val productViewModel: ProductsViewModel = viewModel()
+//            productViewModel.fetch()
         }
     }
 }

@@ -16,7 +16,7 @@ class ProductsViewModel: ViewModel() {
                     Log.d("ProductsViewModel","Название: ${product.title}, категория: ${product.category}, рейтинг: ${product.rating}")
                 }
             } catch (e: Exception) {
-                Log.e(TAG,"${e.message}", e)
+                Log.e("ProductsViewModel","${e.message}", e)
             }
         }
     }
