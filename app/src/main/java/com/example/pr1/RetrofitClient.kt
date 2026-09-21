@@ -1,6 +1,7 @@
 package com.example.pr1
 
 import com.example.pr1.service.ProductsInterface
+import com.example.pr1.service.RecipeInterface
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -22,4 +23,5 @@ object RetrofitClient {
         .build()
 
     val retrofitAPI: ProductsInterface = retrofit.create(ProductsInterface::class.java)
+    val recipeAPI: RecipeInterface = retrofit.create(RecipeInterface::class.java)
 }
