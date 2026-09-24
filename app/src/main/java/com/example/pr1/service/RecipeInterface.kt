@@ -5,6 +5,6 @@ import retrofit2.http.Body
 import retrofit2.http.POST
 
 interface RecipeInterface {
-    @POST("recipe/add")
+    @POST("recipes/add")
     suspend fun addRecipe(@Body recipe: Recipe): Recipe
 }

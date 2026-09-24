@@ -12,7 +12,7 @@ class RecipeViewModel: ViewModel() {
         viewModelScope.launch {
             try {
                 val recipe = RetrofitClient.recipeAPI.addRecipe(recipe)
-                Log.d("RecipeViewModel","${recipe.id}, ${recipe.name}, ${recipe.instructions}, ${recipe.tags}, ${recipe.rating}")
+                Log.d("RecipeViewModel","${recipe.id},\n ${recipe.name},\n ${recipe.instructions},\n ${recipe.tags},\n ${recipe.rating}")
             } catch (e: Exception) {
                 Log.e("RecipeViewModel", "${e.message}", e)
             }
