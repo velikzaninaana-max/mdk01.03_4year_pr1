@@ -16,9 +16,12 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
+            //pr17
+            val productsViewModel: ProductsViewModel = viewModel()
+            productsViewModel.deleteUser(21)
             //pr16
-            val userViewModel: UserViewModel = viewModel()
-            userViewModel.updateUser()
+//            val userViewModel: UserViewModel = viewModel()
+//            userViewModel.updateUser()
 
             //pr15
 //            val recipeViewModel: RecipeViewModel  = viewModel()
