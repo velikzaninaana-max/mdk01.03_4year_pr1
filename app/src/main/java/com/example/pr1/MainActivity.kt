@@ -9,11 +9,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.example.pr1.model.Recipe
-import com.example.pr1.model.Address
-import com.example.pr1.model.User
 import com.example.pr1.ui.theme.Pr1Theme
-import com.example.pr1.ui.theme.UserViewModel
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,20 +18,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             //pr16
             val userViewModel: UserViewModel = viewModel()
-
-            val address = Address(
-                address = "пр-т Мира, 18",
-                city = "г. Заволжье"
-            )
-            val user = User(
-                id = 16,
-                firstName = "Антон",
-                lastName = "Кудрин",
-                gender = "мужской",
-                address = address
-            )
-            userViewModel.getUser(id = 16)
-            userViewModel.updateUser(id = 16, user)
+            userViewModel.updateUser()
 
             //pr15
 //            val recipeViewModel: RecipeViewModel  = viewModel()

@@ -12,5 +12,4 @@ interface UserInterface {
 
     @PUT("users/{id}")
     suspend fun updateUser(@Path("id") id: Int, @Body user: User): User
-    //
 }
