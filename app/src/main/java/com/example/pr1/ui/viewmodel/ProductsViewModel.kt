@@ -7,7 +7,7 @@ import com.example.pr1.data.RetrofitClient
 import kotlinx.coroutines.launch
 
 class ProductsViewModel: ViewModel() {
-        fun deleteUser(id: Int){
+        fun deleteProduct(id: Int){
             viewModelScope.launch {
                 try {
                     val product = RetrofitClient.retrofitAPI.deleteProduct(id)

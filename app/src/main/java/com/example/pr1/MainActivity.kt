@@ -19,7 +19,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             //pr17
             val productsViewModel: ProductsViewModel = viewModel()
-            productsViewModel.deleteUser(21)
+            productsViewModel.deleteProduct(21)
             //pr16
 //            val userViewModel: UserViewModel = viewModel()
 //            userViewModel.updateUser()
