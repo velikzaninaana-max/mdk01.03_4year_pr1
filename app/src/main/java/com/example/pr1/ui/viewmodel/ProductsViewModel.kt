@@ -1,8 +1,9 @@
-package com.example.pr1
+package com.example.pr1.ui.viewmodel
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.pr1.data.RetrofitClient
 import kotlinx.coroutines.launch
 
 class ProductsViewModel: ViewModel() {

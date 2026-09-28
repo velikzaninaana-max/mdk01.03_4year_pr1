@@ -1,8 +1,8 @@
-package com.example.pr1
+package com.example.pr1.data
 
-import com.example.pr1.service.ProductsInterface
-import com.example.pr1.service.RecipeInterface
-import com.example.pr1.service.UserInterface
+import com.example.pr1.data.service.ProductsInterface
+import com.example.pr1.data.service.RecipeInterface
+import com.example.pr1.data.service.UserInterface
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit

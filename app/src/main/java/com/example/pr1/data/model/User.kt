@@ -1,4 +1,4 @@
-package com.example.pr1.model
+package com.example.pr1.data.model
 
 data class User(
     val id: Int? = null,

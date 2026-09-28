@@ -1,7 +1,7 @@
-package com.example.pr1.service
+package com.example.pr1.data.service
 
-import com.example.pr1.model.Product
-import com.example.pr1.model.ProductsResponse
+import com.example.pr1.data.model.Product
+import com.example.pr1.data.model.ProductsResponse
 import retrofit2.http.DELETE
 import retrofit2.http.GET
 import retrofit2.http.Path

@@ -1,6 +1,6 @@
-package com.example.pr1.service
+package com.example.pr1.data.service
 
-import com.example.pr1.model.User
+import com.example.pr1.data.model.User
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.PUT
