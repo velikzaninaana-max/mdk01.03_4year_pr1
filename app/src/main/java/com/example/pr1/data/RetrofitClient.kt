@@ -1,5 +1,7 @@
 package com.example.pr1.data
 
+import com.example.pr1.data.service.CommentsInterface
+import com.example.pr1.data.service.LoginInterface
 import com.example.pr1.data.service.ProductsInterface
 import com.example.pr1.data.service.RecipeInterface
 import com.example.pr1.data.service.UserInterface
@@ -28,7 +30,15 @@ object RetrofitClient {
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 
+    val retrofitSwagger = Retrofit.Builder()
+        .baseUrl("http://10.207.106.59:8090/api/collections/")
+        .client(client)
+        .addConverterFactory(GsonConverterFactory.create())
+        .build()
+
     val retrofitAPI: ProductsInterface = retrofit.create(ProductsInterface::class.java)
     val recipeAPI: RecipeInterface = retrofit.create(RecipeInterface::class.java)
     val userAPI: UserInterface = retrofit.create(UserInterface::class.java)
+    val commentsAPI: CommentsInterface = retrofitSwagger.create(CommentsInterface::class.java)
+    val loginAPI: LoginInterface = retrofitSwagger.create(LoginInterface::class.java)
 }
