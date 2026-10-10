@@ -13,7 +13,9 @@ class CommentViewModel: ViewModel() {
         viewModelScope.launch {
             try {
                 val login = RetrofitClient.loginAPI.postLogin(loginRequest)
-                Log.d("RecipeViewModel","${login.record}, ${login.token}")
+                Log.d("CommentViewModel","Response: ${login.token}, ${login.record}")
+                val comments = RetrofitClient.commentsAPI.getComments("Bearer ${login.token}")
+                Log.d("CommentViewModel", "items: ${comments.items},\n page: ${comments.page},\n perPage: ${comments.perPage},\n totalItems: ${comments.totalItems},\n totalPages: ${comments.totalPages}")
             }catch (e: Exception){
                 Log.e("CommentViewModel", "${e.message}", e)
             }

@@ -6,5 +6,5 @@ import retrofit2.http.Header
 
 interface CommentsInterface {
     @GET("comments/records")
-    suspend fun getComments(@Header("Authentication") token: String): CommentsResponse
+    suspend fun getComments(@Header("Authorization") token: String): CommentsResponse
 }

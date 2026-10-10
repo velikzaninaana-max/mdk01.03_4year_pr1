@@ -1,7 +1,7 @@
 package com.example.pr1.data.model
 
 data class CommentsResponse(
-    val items: Comments,
+    val items: List<Comments>,
     val page: Int,
     val perPage: Int,
     val totalItems: Int,

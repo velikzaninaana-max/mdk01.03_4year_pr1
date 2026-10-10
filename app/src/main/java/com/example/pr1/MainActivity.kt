@@ -9,17 +9,26 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.pr1.data.model.LoginRequest
 import com.example.pr1.ui.theme.Pr1Theme
-import com.example.pr1.ui.viewmodel.ProductsViewModel
+import com.example.pr1.ui.viewmodel.CommentViewModel
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
+            //pr18
+            val commentViewModel: CommentViewModel = viewModel()
+            val loginRequest = LoginRequest(
+                identity = "aveliczhanina@yandex.ru",
+                password = "root1234"
+            )
+            commentViewModel.loginAndComments(loginRequest)
+
             //pr17
-            val productsViewModel: ProductsViewModel = viewModel()
-            productsViewModel.deleteProduct(21)
+//            val productsViewModel: ProductsViewModel = viewModel()
+//            productsViewModel.deleteProduct(21)
             //pr16
 //            val userViewModel: UserViewModel = viewModel()
 //            userViewModel.updateUser()
