@@ -4,27 +4,52 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.lifecycle.viewmodel.initializer
+import androidx.lifecycle.viewmodel.viewModelFactory
+import com.example.pr1.data.TokenManager
 import com.example.pr1.data.model.LoginRequest
 import com.example.pr1.ui.theme.Pr1Theme
 import com.example.pr1.ui.viewmodel.CommentViewModel
+import com.example.pr1.ui.viewmodel.LoginViewModel
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
+            //pr19
+            val tokenManager = TokenManager(applicationContext)
+
+            val loginViewModel: LoginViewModel by viewModels{
+                viewModelFactory {
+                    initializer {
+                        LoginViewModel(tokenManager)
+                    }
+                }
+            }
+
+            val commentViewModel: CommentViewModel by viewModels(){
+                viewModelFactory {
+                    initializer {
+                        CommentViewModel(tokenManager)
+                    }
+                }
+            }
+            commentViewModel.getComment()
+
             //pr18
-            val commentViewModel: CommentViewModel = viewModel()
-            val loginRequest = LoginRequest(
-                identity = "aveliczhanina@yandex.ru",
-                password = "root1234"
-            )
-            commentViewModel.loginAndComments(loginRequest)
+//            val loginViewModel: LoginViewModel = viewModel()
+//            val loginRequest = LoginRequest(
+//                identity = "aveliczhanina@yandex.ru",
+//                password = "root1234"
+//            )
+//            loginViewModel.loginPost(loginRequest)
 
             //pr17
 //            val productsViewModel: ProductsViewModel = viewModel()

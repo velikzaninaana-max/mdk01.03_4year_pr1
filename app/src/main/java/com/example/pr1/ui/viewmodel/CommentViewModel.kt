@@ -4,20 +4,27 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.pr1.data.RetrofitClient
-import com.example.pr1.data.model.LoginRequest
-import com.example.pr1.data.model.LoginResponse
+import com.example.pr1.data.TokenManager
+import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
-class CommentViewModel: ViewModel() {
-    fun loginAndComments(loginRequest: LoginRequest) {
-        viewModelScope.launch {
+class CommentViewModel(val tokenManager: TokenManager): ViewModel() {
+    private val token: StateFlow<String?> = tokenManager.tokenFlow()
+        .stateIn(
+            scope = viewModelScope,
+            started = SharingStarted.WhileSubscribed(5000),
+            initialValue = null
+        )
+    fun getComment(){
+        if (token != null)
+        viewModelScope.launch{
             try {
-                val login = RetrofitClient.loginAPI.postLogin(loginRequest)
-                Log.d("CommentViewModel","Response: ${login.token}, ${login.record}")
-                val comments = RetrofitClient.commentsAPI.getComments("Bearer ${login.token}")
-                Log.d("CommentViewModel", "items: ${comments.items},\n page: ${comments.page},\n perPage: ${comments.perPage},\n totalItems: ${comments.totalItems},\n totalPages: ${comments.totalPages}")
-            }catch (e: Exception){
-                Log.e("CommentViewModel", "${e.message}", e)
+                val comments = RetrofitClient.commentsAPI.getComments("Bearer ${token.value}")
+                Log.d("LoginViewModel", "items: ${comments.items},\n page: ${comments.page},\n perPage: ${comments.perPage},\n totalItems: ${comments.totalItems},\n totalPages: ${comments.totalPages}")
+            }catch (ex: Exception){
+                Log.e("CommentViewModel", ex.message.toString())
             }
         }
     }
