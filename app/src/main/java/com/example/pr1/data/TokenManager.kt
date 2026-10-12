@@ -12,7 +12,9 @@ import kotlinx.coroutines.flow.map
 val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
 
 class TokenManager(private val context: Context) {
-    val ACCESS_TOKEN = stringPreferencesKey("access_token")
+    companion object{
+        val ACCESS_TOKEN = stringPreferencesKey("access_token")
+    }
     suspend fun saveToken(token: String) {
         context.dataStore.edit { preferences ->
             preferences[ACCESS_TOKEN] = token

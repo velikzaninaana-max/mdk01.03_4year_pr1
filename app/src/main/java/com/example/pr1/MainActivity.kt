@@ -26,22 +26,27 @@ class MainActivity : ComponentActivity() {
             //pr19
             val tokenManager = TokenManager(applicationContext)
 
-            val loginViewModel: LoginViewModel by viewModels{
-                viewModelFactory {
-                    initializer {
-                        LoginViewModel(tokenManager)
-                    }
-                }
-            }
-
-            val commentViewModel: CommentViewModel by viewModels(){
+            val commentViewModel: CommentViewModel by viewModels{
                 viewModelFactory {
                     initializer {
                         CommentViewModel(tokenManager)
                     }
                 }
             }
-            commentViewModel.getComment()
+
+            val loginViewModel: LoginViewModel by viewModels{
+                viewModelFactory {
+                    initializer {
+                        LoginViewModel(tokenManager, commentViewModel)
+                    }
+                }
+            }
+
+            val loginRequest = LoginRequest(
+                identity = "aveliczhanina@yandex.ru",
+                password = "root1234"
+            )
+            loginViewModel.loginPost(loginRequest)
 
             //pr18
 //            val loginViewModel: LoginViewModel = viewModel()
